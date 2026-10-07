@@ -1,0 +1,16 @@
+# Pure-liquid density pilot: ThermoML (NIST TRC) articles are discovered by
+# title search in the archive index, then filtered to single-component liquid
+# mass densities near ambient conditions. Target compounds (InChIKey -> id):
+compounds:
+  XLYOFNOQVPJJNP-UHFFFAOYSA-N: {system_id: water,    smiles: "O"}
+  OKKJLVBELUTLKV-UHFFFAOYSA-N: {system_id: methanol, smiles: "CO"}
+  LFQSCWFLJHTTHZ-UHFFFAOYSA-N: {system_id: ethanol,  smiles: "CCO"}
+  CSCPPACGZOOCGX-UHFFFAOYSA-N: {system_id: acetone,  smiles: "CC(C)=O"}
+  VLKZOEOYAKHREP-UHFFFAOYSA-N: {system_id: n-hexane, smiles: "CCCCCC"}
+  UHOVQNZJYSORNB-UHFFFAOYSA-N: {system_id: benzene,  smiles: "c1ccccc1"}
+  WEVYAHXRMPXWCK-UHFFFAOYSA-N: {system_id: acetonitrile, smiles: "CC#N"}
+title_keywords: [density, densities, volumetric]
+name_keywords: [methanol, ethanol, acetone, hexane, benzene, acetonitrile, water]
+max_articles: 12
+temperature_window_K: [288.0, 318.0]
+pressure_window_bar: [0.9, 1.1]

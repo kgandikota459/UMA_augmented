@@ -1,0 +1,55 @@
+{
+  "name": "uma-exp-pilot",
+  "version": "0.1.0",
+  "created": "2026-10-07T16:33:06.731969+00:00",
+  "entries": [
+    {
+      "path": "/Users/kaushalgandikota/Projects/UMA_augmented/data/processed/vibrational.parquet",
+      "sha256": "269abd4e3a5113be7ace317bbfb74bdf89d5334cc5f8f158fc1f7c02272b2e1b",
+      "n_records": 110,
+      "source": "NIST Chemistry WebBook (SRD 69)",
+      "license": "NIST SRD, Standard Reference Data Act",
+      "redistribution": "restricted (keep local; regenerate by script)",
+      "value_kinds": [
+        "evaluated"
+      ]
+    },
+    {
+      "path": "/Users/kaushalgandikota/Projects/UMA_augmented/data/processed/solvation.parquet",
+      "sha256": "eb922746e4607d9cac813cbb0e69a51d9da930fa66bbc5c477660b5ba43302bf",
+      "n_records": 431,
+      "source": "FreeSolv",
+      "license": "CC BY 4.0",
+      "redistribution": "allowed with attribution",
+      "value_kinds": [
+        "evaluated"
+      ]
+    },
+    {
+      "path": "/Users/kaushalgandikota/Projects/UMA_augmented/data/processed/density.parquet",
+      "sha256": "3f8e1fb903dd24af957ddb8c7e2b63c1bf57e7a5329f004d4248bfe6dba78bbf",
+      "n_records": 49,
+      "source": "NIST TRC ThermoML Archive",
+      "license": "archive terms; data from journal articles",
+      "redistribution": "unknown (keep local)",
+      "value_kinds": [
+        "measured"
+      ]
+    }
+  ],
+  "extraction": {
+    "script": "scripts/build_pilot_dataset.py",
+    "python": "3.12.13",
+    "date": "2026-10-07",
+    "seed": 0
+  },
+  "notes": [
+    "vibrational: {\"H2O\": \"3 fundamentals (C2v, sigma=2)\", \"D2O\": \"3 fundamentals (C2v, sigma=2)\", \"NH3\": \"4 fundamentals (C3v, sigma=3)\", \"CH4\": \"4 fundamentals (Td, sigma=12)\", \"H2CO\": \"6 fundamentals (C2v, sigma=2)\", \"HCN\": \"3 fundamentals (C\\u221ev, sigma=1)\", \"C2H2\": \"5 fundamentals (D\\u221eh, sigma=2)\", \"C2H4\": \"12 fundamentals (D2h, sigma=4)\", \"C2H6\": \"12 fundamentals (D3d, sigma=6)\", \"CH3OH\": \"12 fundamentals (Cs, sigma=1)\", \"H2S\": \"3 fundamentals (C2v, sigma=2)\", \"SO2\": \"no Shimanouchi table on the WebBook page\", \"CH3Cl\": \"6 fundamentals (C3v, sigma=3)\", \"CH2F2\": \"no Shimanouchi table on the WebBook page\", \"HCOOH\": \"9 fundamentals (Cs, sigma=1)\", \"CO2\": \"no Shimanouchi table on the WebBook page\", \"C6H6\": \"20 fundamentals (D6h, sigma=12)\", \"CH3CN\": \"8 fundamentals (C3v, sigma=3)\"}",
+    "solvation: {\"records_HCNO\": 431, \"of_total\": 642, \"default_uncertainty_assigned\": 395}",
+    "density: {\"candidates\": 583, \"articles_with_pure_density\": [{\"doi\": \"10.1021/je030102f\", \"n\": 12, \"compounds\": [\"acetone\", \"water\"]}, {\"doi\": \"10.1021/je030107c\", \"n\": 3, \"compounds\": [\"n-hexane\"]}, {\"doi\": \"10.1021/je030130y\", \"n\": 4, \"compounds\": [\"benzene\"]}, {\"doi\": \"10.1021/je0301500\", \"n\": 1, \"compounds\": [\"methanol\"]}, {\"doi\": \"10.1021/je034002l\", \"n\": 5, \"compounds\": [\"n-hexane\"]}, {\"doi\": \"10.1021/je034005y\", \"n\": 4, \"compounds\": [\"benzene\"]}, {\"doi\": \"10.1016/j.jct.2004.04.010\", \"n\": 1, \"compounds\": [\"water\"]}, {\"doi\": \"10.1021/je030218b\", \"n\": 1, \"compounds\": [\"ethanol\"]}, {\"doi\": \"10.1021/je0302304\", \"n\": 3, \"compounds\": [\"ethanol\"]}, {\"doi\": \"10.1021/je034022n\", \"n\": 4, \"compounds\": [\"benzene\"]}, {\"doi\": \"10.1021/je0342825\", \"n\": 9, \"compounds\": [\"ethanol\", \"methanol\", \"water\"]}, {\"doi\": \"10.1021/je049912x\", \"n\": 2, \"compounds\": [\"ethanol\"]}]}",
+    "GAP fluctuation_response: Cp, kappa_T, alpha_P for pure liquids: ThermoML (D2) contains heat capacity, speed of sound and PVT data; kappa_T usually derived (evaluated) - record as EVALUATED.",
+    "GAP kinetics_transport: Self-diffusion and viscosity of pure liquids: ThermoML (D2) transport properties (viscosity) and primary NMR/tracer diffusion papers; targeted extraction needed.",
+    "GAP electronic_state: Adiabatic IE/EA: NIST WebBook ion energetics (D1) - parser planned; distinguish vertical/adiabatic and 0 K/298 K.",
+    "GAP ir_raman_dielectric: Absolute IR intensities: NIST quantitative IR spectra (D1, gas phase) for a handful of molecules; dielectric constants: ThermoML (D2)."
+  ]
+}

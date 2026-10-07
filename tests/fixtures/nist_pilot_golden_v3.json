@@ -1,0 +1,429 @@
+{
+ "parser": "nist_shimanouchi_v3.1",
+ "exclude_flags": [
+  "fermi_resonance",
+  "not_directly_observed",
+  "condensed_phase_only",
+  "phase_not_stated",
+  "observed_via_coriolis_interaction",
+  "silent_mode",
+  "inversion_doubling",
+  "rating_uncertainty_gt_15cm",
+  "overlapped_band",
+  "unknown_note_code",
+  "free_text_comment",
+  "nonnumeric_value",
+  "conflicting_duplicate_rows",
+  "selected_not_gas_column"
+ ],
+ "molecules": {
+  "H2O": {
+   "page": "C7732185_mask800_2026-10-07.html",
+   "has_table": true,
+   "page_errors": [],
+   "symmetry": "C2v",
+   "modes": {
+    "a11": [],
+    "a12": [],
+    "b13": []
+   },
+   "n_usable": 3,
+   "values_sha256": "dd6737285c44dd8c314bedb71b509f8e143f7811fbfa90bc99e2d9ffa039e8cd"
+  },
+  "D2O": {
+   "page": "C7789200_mask800_2026-10-07.html",
+   "has_table": true,
+   "page_errors": [],
+   "symmetry": "C2v",
+   "modes": {
+    "a11": [],
+    "a12": [],
+    "b13": []
+   },
+   "n_usable": 3,
+   "values_sha256": "32d3b413dc8c0ad2f11a2a38b5e99b646509a8ac160d4bff8d1569924999fe21"
+  },
+  "NH3": {
+   "page": "C7664417_mask800_2026-10-07.html",
+   "has_table": true,
+   "page_errors": [],
+   "symmetry": "C3v",
+   "modes": {
+    "a11": [
+     "inversion_doubling",
+     "phase_not_stated",
+     "selected_not_gas_column"
+    ],
+    "a12": [
+     "inversion_doubling",
+     "phase_not_stated",
+     "selected_not_gas_column"
+    ],
+    "e3": [
+     "inversion_doubling",
+     "phase_not_stated",
+     "selected_not_gas_column"
+    ],
+    "e4": [
+     "inversion_doubling",
+     "phase_not_stated",
+     "selected_not_gas_column"
+    ]
+   },
+   "n_usable": 0,
+   "values_sha256": "021db9c2d70161113c8f1870aab55eda107ca5b7d7a8c3e679679eaa09307049"
+  },
+  "CH4": {
+   "page": "C74828_mask800_2026-10-07.html",
+   "has_table": true,
+   "page_errors": [],
+   "symmetry": "Td",
+   "modes": {
+    "a11": [],
+    "e2": [
+     "observed_via_coriolis_interaction"
+    ],
+    "f23": [],
+    "f24": []
+   },
+   "n_usable": 3,
+   "values_sha256": "328dcab9c25542c7b7de8872234ce7f5b14301d696f795cf87dfc85fab562c79"
+  },
+  "H2CO": {
+   "page": "C50000_mask800_2026-10-07.html",
+   "has_table": true,
+   "page_errors": [],
+   "symmetry": "C2v",
+   "modes": {
+    "a11": [],
+    "a12": [],
+    "a13": [],
+    "b14": [],
+    "b15": [],
+    "b26": []
+   },
+   "n_usable": 6,
+   "values_sha256": "01536c5055a7cb8fc447d6cda6fba48403f42efc0b783b35860765dd88cd4b7e"
+  },
+  "HCN": {
+   "page": "C74908_mask800_2026-10-07.html",
+   "has_table": true,
+   "page_errors": [],
+   "symmetry": "C∞v",
+   "modes": {
+    "σ+1": [],
+    "π2": [],
+    "σ+3": []
+   },
+   "n_usable": 3,
+   "values_sha256": "1e9db18353d1135edf1eb6650385a34373099d8367cb07b69899f85bbd15e596"
+  },
+  "C2H2": {
+   "page": "C74862_mask800_2026-10-07.html",
+   "has_table": true,
+   "page_errors": [],
+   "symmetry": "D∞h",
+   "modes": {
+    "σg+1": [],
+    "σg+2": [],
+    "σu+3": [
+     "fermi_resonance",
+     "selected_not_gas_column"
+    ],
+    "πg4": [],
+    "πu5": []
+   },
+   "n_usable": 4,
+   "values_sha256": "ecdab0d63467431f2d364585d07fce36226d8c51fc2f72262798a54b42ed842a"
+  },
+  "C2H4": {
+   "page": "C74851_mask800_2026-10-07.html",
+   "has_table": true,
+   "page_errors": [],
+   "symmetry": "D2h",
+   "modes": {
+    "ag1": [],
+    "ag2": [
+     "fermi_resonance"
+    ],
+    "ag3": [],
+    "au4": [
+     "not_directly_observed",
+     "phase_not_stated",
+     "rating_uncertainty_gt_15cm",
+     "selected_not_gas_column",
+     "silent_mode"
+    ],
+    "b1g5": [],
+    "b1g6": [
+     "condensed_phase_only",
+     "selected_not_gas_column"
+    ],
+    "b1u7": [],
+    "b2g8": [
+     "condensed_phase_only",
+     "selected_not_gas_column"
+    ],
+    "b2u9": [],
+    "b2u10": [],
+    "b3u11": [],
+    "b3u12": []
+   },
+   "n_usable": 8,
+   "values_sha256": "a3d6435520937f3f17cd37de1affea8104ffd4ca6491161b89fbabed5feecdd1"
+  },
+  "C2H6": {
+   "page": "C74840_mask800_2026-10-07.html",
+   "has_table": true,
+   "page_errors": [],
+   "symmetry": "D3d",
+   "modes": {
+    "a1g1": [],
+    "a1g2": [],
+    "a1g3": [],
+    "a1u4": [],
+    "a2u5": [],
+    "a2u6": [],
+    "eg7": [],
+    "eg8": [],
+    "eg9": [
+     "not_directly_observed",
+     "phase_not_stated",
+     "rating_uncertainty_gt_15cm",
+     "selected_not_gas_column"
+    ],
+    "eu10": [],
+    "eu11": [
+     "fermi_resonance"
+    ],
+    "eu12": []
+   },
+   "n_usable": 10,
+   "values_sha256": "f398a46d4425e0a0ca19dccbdd638c6f98e959cac607c6f1b5a52fba0a767254"
+  },
+  "CH3OH": {
+   "page": "C67561_mask800_2026-10-07.html",
+   "has_table": true,
+   "page_errors": [],
+   "symmetry": "Cs",
+   "modes": {
+    "a'1": [],
+    "a'2": [],
+    "a'3": [],
+    "a'4": [
+     "overlapped_band"
+    ],
+    "a'5": [],
+    "a'6": [],
+    "a'7": [
+     "overlapped_band"
+    ],
+    "a'8": [],
+    "a''9": [],
+    "a''10": [
+     "overlapped_band"
+    ],
+    "a''11": [
+     "condensed_phase_only",
+     "selected_not_gas_column"
+    ],
+    "a''12": [
+     "conflicting_duplicate_rows",
+     "free_text_comment",
+     "nonnumeric_value",
+     "selected_not_gas_column"
+    ]
+   },
+   "n_usable": 7,
+   "values_sha256": "1c48546ee4c059fff850ad9c4fbe91e6913e0fc1009b9798f769e0400b792aaa"
+  },
+  "H2S": {
+   "page": "C7783064_mask800_2026-10-07.html",
+   "has_table": true,
+   "page_errors": [],
+   "symmetry": "C2v",
+   "modes": {
+    "a11": [],
+    "a12": [],
+    "b13": []
+   },
+   "n_usable": 3,
+   "values_sha256": "7db9721cebfaa68f539cb6d12bb597103d63b518801786b5847b5aeab7b63b3b"
+  },
+  "SO2": {
+   "page": "C7446095_mask800_2026-10-07.html",
+   "has_table": false,
+   "page_errors": [],
+   "symmetry": null
+  },
+  "CH3Cl": {
+   "page": "C74873_mask800_2026-10-07.html",
+   "has_table": true,
+   "page_errors": [],
+   "symmetry": "C3v",
+   "modes": {
+    "a11": [
+     "fermi_resonance",
+     "rating_uncertainty_gt_15cm",
+     "selected_not_gas_column"
+    ],
+    "a12": [],
+    "a13": [],
+    "e4": [
+     "fermi_resonance"
+    ],
+    "e5": [],
+    "e6": []
+   },
+   "n_usable": 4,
+   "values_sha256": "d346269ab2a8125a7d22803e609476d37b975f98f5106184afe6346d04be119f"
+  },
+  "CH2F2": {
+   "page": "C75105_mask800_2026-10-07.html",
+   "has_table": false,
+   "page_errors": [],
+   "symmetry": null
+  },
+  "HCOOH": {
+   "page": "C64186_mask800_2026-10-07.html",
+   "has_table": true,
+   "page_errors": [],
+   "symmetry": "Cs",
+   "modes": {
+    "a'1": [],
+    "a'2": [],
+    "a'3": [],
+    "a'4": [],
+    "a'5": [],
+    "a'6": [],
+    "a'7": [],
+    "a''8": [],
+    "a''9": []
+   },
+   "n_usable": 9,
+   "values_sha256": "faec224b4419053adc42c44abfba12748b0cef008d3759abbe7bcd39238de1da"
+  },
+  "CO2": {
+   "page": "C124389_mask800_2026-10-07.html",
+   "has_table": false,
+   "page_errors": [],
+   "symmetry": null
+  },
+  "C6H6": {
+   "page": "C71432_mask800_2026-10-07.html",
+   "has_table": true,
+   "page_errors": [],
+   "symmetry": "D6h",
+   "modes": {
+    "a1g1": [
+     "condensed_phase_only",
+     "selected_not_gas_column"
+    ],
+    "a1g2": [
+     "condensed_phase_only",
+     "selected_not_gas_column"
+    ],
+    "a2g3": [
+     "condensed_phase_only",
+     "rating_uncertainty_gt_15cm",
+     "selected_not_gas_column"
+    ],
+    "a2u4": [],
+    "b1u5": [
+     "condensed_phase_only",
+     "selected_not_gas_column"
+    ],
+    "b1u6": [
+     "condensed_phase_only",
+     "selected_not_gas_column"
+    ],
+    "b2g7": [
+     "not_directly_observed",
+     "phase_not_stated",
+     "rating_uncertainty_gt_15cm",
+     "selected_not_gas_column",
+     "silent_mode"
+    ],
+    "b2g8": [
+     "not_directly_observed",
+     "phase_not_stated",
+     "rating_uncertainty_gt_15cm",
+     "selected_not_gas_column",
+     "silent_mode"
+    ],
+    "b2u9": [
+     "condensed_phase_only",
+     "selected_not_gas_column"
+    ],
+    "b2u10": [
+     "condensed_phase_only",
+     "selected_not_gas_column"
+    ],
+    "e1g11": [
+     "condensed_phase_only",
+     "selected_not_gas_column"
+    ],
+    "e1u12": [
+     "condensed_phase_only",
+     "fermi_resonance",
+     "rating_uncertainty_gt_15cm",
+     "selected_not_gas_column"
+    ],
+    "e1u13": [],
+    "e1u14": [],
+    "e2g15": [
+     "condensed_phase_only",
+     "selected_not_gas_column"
+    ],
+    "e2g16": [
+     "condensed_phase_only",
+     "fermi_resonance",
+     "rating_uncertainty_gt_15cm",
+     "selected_not_gas_column"
+    ],
+    "e2g17": [
+     "condensed_phase_only",
+     "selected_not_gas_column"
+    ],
+    "e2g18": [
+     "condensed_phase_only",
+     "selected_not_gas_column"
+    ],
+    "e2u19": [
+     "condensed_phase_only",
+     "selected_not_gas_column"
+    ],
+    "e2u20": [
+     "condensed_phase_only",
+     "selected_not_gas_column"
+    ]
+   },
+   "n_usable": 3,
+   "values_sha256": "eb3f911b3ebbab914bce3f9a564fb2e21e1b3ca98ac322e05805ea10d3ecae07"
+  },
+  "CH3CN": {
+   "page": "C75058_mask800_2026-10-07.html",
+   "has_table": true,
+   "page_errors": [],
+   "symmetry": "C3v",
+   "modes": {
+    "a11": [],
+    "a12": [],
+    "a13": [
+     "condensed_phase_only",
+     "not_directly_observed",
+     "selected_not_gas_column"
+    ],
+    "a14": [],
+    "e5": [],
+    "e6": [
+     "fermi_resonance"
+    ],
+    "e7": [],
+    "e8": []
+   },
+   "n_usable": 6,
+   "values_sha256": "d8bc627c96147afe39664daf5e20fd02d7f3311250ac959c69edab748d20a747"
+  }
+ }
+}

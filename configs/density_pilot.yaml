@@ -1,0 +1,26 @@
+# Stage 3: equilibrium proof (pure-liquid density, ThermoML).
+# Requires an explicit decision to run the aperiodic-trained omol task under
+# PBC (UMA docs: "periodic systems should be treated with some caution").
+name: density_pilot
+potential:
+  checkpoint: uma-s-1p1
+  task: omol
+  dtype: float64           # training/reweighting energies on CPU fp64
+  preset: readout
+density:
+  enabled: true
+  systems: [methanol]
+  n_molecules: 32
+  acknowledge_periodic_omol: true
+  dt_fs: 0.5
+  n_equilibration: 4000
+  n_production: 20000
+  stride: 20
+sampling:                  # dynamics on Apple Metal (fp32); importance weights correct
+  device: mps              # exactly to the fp64 training potential (verified: ESS 1.0000)
+  dtype: float32
+training:
+  steps: 10
+  lr: 1.0e-5
+  ess_refresh: 0.5
+  ess_reject: 0.1

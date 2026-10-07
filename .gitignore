@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+
+# Raw downloads and derived tables from sources whose redistribution terms
+# are restricted (e.g. NIST SRD). Regenerate with scripts/build_pilot_dataset.py.
+data/raw/
+data/processed/
+# Local run outputs: caches, checkpoints, logs
+runs/
+caches/
+checkpoints/
+*.pt
+!tests/fixtures/*.pt

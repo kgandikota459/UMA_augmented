@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SYNTHETIC fixture in ThermoML layout; INVENTED numbers. -->
+<DataReport xmlns="http://www.iupac.org/namespaces/ThermoML">
+  <Citation><sDOI>10.0000/synthetic.1</sDOI><sTitle>Synthetic densities</sTitle></Citation>
+  <Compound><RegNum><nOrgNum>1</nOrgNum></RegNum><sStandardInChIKey>OKKJLVBELUTLKV-UHFFFAOYSA-N</sStandardInChIKey><sCommonName>methanol</sCommonName></Compound>
+  <PureOrMixtureData>
+    <Component><RegNum><nOrgNum>1</nOrgNum></RegNum></Component>
+    <Property><nPropNumber>1</nPropNumber><Property-MethodID><PropertyGroup><VolumetricProp><ePropName>Mass density, kg/m3</ePropName><eMethodName>Vibrating tube method</eMethodName></VolumetricProp></PropertyGroup></Property-MethodID>
+      <PropPhaseID><ePropPhase>Liquid</ePropPhase></PropPhaseID>
+      <CombinedUncertainty><nCombUncertAssessNum>1</nCombUncertAssessNum><nCombUncertLevOfConfid>95</nCombUncertLevOfConfid></CombinedUncertainty></Property>
+    <PhaseID><ePhase>Liquid</ePhase></PhaseID>
+    <Constraint><ConstraintID><ConstraintType><ePressure>Pressure, kPa</ePressure></ConstraintType></ConstraintID><nConstraintValue>101</nConstraintValue></Constraint>
+    <Variable><nVarNumber>1</nVarNumber><VariableID><VariableType><eTemperature>Temperature, K</eTemperature></VariableType></VariableID></Variable>
+    <NumValues><VariableValue><nVarNumber>1</nVarNumber><nVarValue>298.15</nVarValue></VariableValue>
+      <PropertyValue><nPropNumber>1</nPropNumber><nPropValue>800.0</nPropValue><CombinedUncertainty><nCombExpandUncertValue>0.2</nCombExpandUncertValue></CombinedUncertainty></PropertyValue></NumValues>
+    <NumValues><VariableValue><nVarNumber>1</nVarNumber><nVarValue>308.15</nVarValue></VariableValue>
+      <PropertyValue><nPropNumber>1</nPropNumber><nPropValue>790.0</nPropValue><CombinedUncertainty><nCombExpandUncertValue>0.2</nCombExpandUncertValue></CombinedUncertainty></PropertyValue></NumValues>
+  </PureOrMixtureData>
+</DataReport>

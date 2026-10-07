@@ -1,0 +1,25 @@
+# Stage 2: direct-observable proof (vibrational fundamentals, NIST/Shimanouchi).
+# Planning values below are NOT established hyperparameters; tune on the
+# validation split and record the choice.
+name: vib_pilot
+seed: 0
+potential:
+  checkpoint: uma-s-1p1     # gated; null -> random architecture (mechanics only)
+  task: omol
+  dtype: float64
+  preset: readout           # ~33k params; compare with routing / last_block / adapters
+vibrational:
+  enabled: true
+  target_kind: fundamental_scaled
+  scale_prior_mean: 0.955
+  scale_prior_sd: 0.02
+  fit_scale: true
+  rel_model_sd: 0.015
+  geometry_response: implicit
+training:
+  steps: 30
+  lr: 1.0e-5
+  max_relative_update: 1.0e-3
+  lambda_baseline: 1.0
+  l2sp: 1.0                 # anchor to pretrained weights (planning value; tune on validation)
+  family_priority: {vibrational: 1.0}

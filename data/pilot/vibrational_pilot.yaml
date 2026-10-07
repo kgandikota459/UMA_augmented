@@ -1,0 +1,26 @@
+# Pilot molecules for the direct-observable (vibrational) stage.
+# nist_id: NIST WebBook identifier (C + CAS digits). SMILES carry isotope labels.
+# Selection: small, closed-shell, elements within UMA omol coverage, a mix of
+# point groups with degenerate modes (C3v, Td, D2h, C2v) and one isotopologue
+# pair (H2O/D2O) that probes the same surface with different masses.
+# Species whose WebBook page has no Shimanouchi table are recorded as such by
+# the builder rather than silently dropped.
+molecules:
+  - {system_id: H2O,   nist_id: C7732185,  smiles: "O",            symmetry_number: 2}
+  - {system_id: D2O,   nist_id: C7789200,  smiles: "[2H]O[2H]",    symmetry_number: 2, parent_smiles: "O"}
+  - {system_id: NH3,   nist_id: C7664417,  smiles: "N",            symmetry_number: 3}
+  - {system_id: CH4,   nist_id: C74828,    smiles: "C",            symmetry_number: 12}
+  - {system_id: H2CO,  nist_id: C50000,    smiles: "C=O",          symmetry_number: 2}
+  - {system_id: HCN,   nist_id: C74908,    smiles: "C#N",          symmetry_number: 1}
+  - {system_id: C2H2,  nist_id: C74862,    smiles: "C#C",          symmetry_number: 2}
+  - {system_id: C2H4,  nist_id: C74851,    smiles: "C=C",          symmetry_number: 4}
+  - {system_id: C2H6,  nist_id: C74840,    smiles: "CC",           symmetry_number: 6}
+  - {system_id: CH3OH, nist_id: C67561,    smiles: "CO",           symmetry_number: 1}
+  - {system_id: H2S,   nist_id: C7783064,  smiles: "S",            symmetry_number: 2}
+  - {system_id: SO2,   nist_id: C7446095,  smiles: "O=S=O",        symmetry_number: 2}
+  - {system_id: CH3Cl, nist_id: C74873,    smiles: "CCl",          symmetry_number: 3}
+  - {system_id: CH2F2, nist_id: C75105,    smiles: "FCF",          symmetry_number: 2}
+  - {system_id: HCOOH, nist_id: C64186,    smiles: "OC=O",         symmetry_number: 1}
+  - {system_id: CO2,   nist_id: C124389,   smiles: "O=C=O",        symmetry_number: 2}
+  - {system_id: C6H6,  nist_id: C71432,    smiles: "c1ccccc1",     symmetry_number: 12}
+  - {system_id: CH3CN, nist_id: C75058,    smiles: "CC#N",         symmetry_number: 3}

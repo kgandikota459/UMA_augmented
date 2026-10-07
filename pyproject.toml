@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "umaexp"
+version = "0.1.0"
+description = "Fine-tuning the weights of Meta FAIR's UMA interatomic potentials through experimental observables"
+readme = "README.md"
+requires-python = ">=3.11,<3.15"
+license = { text = "MIT" }
+# Pins reflect the environment this code was verified against on 2026-09-26
+# (see docs/ENVIRONMENT.md and requirements.lock). Recheck before upgrading:
+# fairchem-core changes UMA loading/compat behaviour between minor releases.
+dependencies = [
+  "fairchem-core==2.23.0",
+  "torch~=2.13.0",
+  "ase>=3.26",
+  "numpy>=2.0,<2.5",
+  "scipy>=1.15",
+  "pydantic>=2.7",
+  "pandas>=2.2",
+  "pyarrow>=16",
+  "pint>=0.24",
+  "omegaconf>=2.3",
+  "rdkit>=2025.3",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pymbar>=4.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+  "uma: tests that instantiate the UMA architecture (slow, CPU minutes)",
+  "uma_real: tests against the real gated uma-s-1p1 weights (skipped if not cached)",
+  "slow: long-running statistical tests",
+  "network: tests that need internet access",
+]
+filterwarnings = [
+  "ignore::DeprecationWarning",
+  "ignore:.*Redirects are currently not supported.*",
+]
