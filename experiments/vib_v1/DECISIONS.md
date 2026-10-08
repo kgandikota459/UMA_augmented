@@ -352,3 +352,23 @@ could have influenced it. Append only. Corrections are added as new entries.
     No error value was read.
   - The user chose a git repository with a private GitHub remote, and an
     encrypted disk image of the sealed build held by the user.
+- **D-27 (2026-10-07/08). Held-out fetch completed under the frozen S2.**
+  - **Eligibility.** 34 of 73 offline candidates are eligible. Excluded:
+    - 30 have no unique vibrational (Mask=800) link;
+    - 1 has no unique exact species;
+    - 1 has a formula mismatch;
+    - 3 have page errors;
+    - 1 has a point-group mismatch;
+    - 3 have no usable fundamental.
+
+    No forced-dev candidate was eligible (ethanol had no qualifying page).
+  - **Split.** Fraction 0.5; below_minimum_size false.
+    - HCNO_only stratum: 16 groups, 8 to T.
+    - Other-elements stratum: 18 groups, 9 to T.
+  - **Result.**
+    - T: 17 molecules, 151 label-usable modes, against a minimum of 15
+      molecules and 130 modes.
+    - D_ext: 17 molecules.
+    - Both are sealed in $UMAEXP_SEALED_DIR/build. Only counts were displayed.
+  - **Public record.** experiments/vib_v1/heldout_public.json sha256 8777a2fe61de31159fd96c73df800104c79ecf6a6f3f0b1075cf826c60305fcb, also
+    printed in the session conversation.
