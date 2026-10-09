@@ -396,3 +396,15 @@ could have influenced it. Append only. Corrections are added as new entries.
     sensitivity entries, drift present.
   - **§1 text:** ethanol had no qualifying page and is in neither set.
   - S2 files and §2 text unchanged (`verify_s2` passes).
+- **D-30 (2026-10-09T04:13:42Z). PROTOCOL stage frozen; D_ext unsealed.**
+  - The critic's sign-off (red-team report #7) is recorded verbatim in
+    FROZEN_PROTOCOL.json, sha256
+    c60638729d38746594c8105406689b617cf2e61cef955787219eff94438a8e73, at git
+    commit 16158ee. No S2 file had changed.
+  - `unseal_dev_ext.py` verified the salted commitments and released D_ext: 17
+    molecules, listed in data/pilot/vibrational_ext.yaml. The reserved set is
+    now 56 blocks. T stays sealed.
+  - The reserved-set test count was updated from 73 to 56 (tests/ is outside
+    the frozen code tree).
+  - From here DECISIONS.md is append-only, and any change under src/, scripts/
+    or configs/ needs an entry in DEVIATIONS.md.

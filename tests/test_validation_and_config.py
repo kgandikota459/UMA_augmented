@@ -111,7 +111,7 @@ def test_reserved_held_out_candidates_are_refused_by_every_loader():
     from umaexp.pipeline import Built, density_tasks
 
     blocks = reserved_blocks()
-    assert len(blocks) == 73  # G2 candidates after the label-free offline steps 1-4
+    assert len(blocks) == 56  # 73 offline G2 candidates minus the 17 D_ext blocks released at unsealing
     with pytest.raises(PermissionError):
         assert_not_reserved([sorted(blocks)[0]], "test")
     cfg = load_config(os.path.join(ROOT, "configs", "density_pilot.yaml"),
