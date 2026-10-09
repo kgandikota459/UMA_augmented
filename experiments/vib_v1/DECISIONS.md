@@ -372,3 +372,11 @@ could have influenced it. Append only. Corrections are added as new entries.
     - Both are sealed in $UMAEXP_SEALED_DIR/build. Only counts were displayed.
   - **Public record.** experiments/vib_v1/heldout_public.json sha256 8777a2fe61de31159fd96c73df800104c79ecf6a6f3f0b1075cf826c60305fcb, also
     printed in the session conversation.
+- **D-28 (2026-10-08). Backups.**
+  - The project is pushed to a private GitHub remote
+    (github.com/kgandikota459/UMA_augmented).
+  - The user made an AES-256 encrypted disk image of the sealed build
+    (`vib_v1_sealed_build.dmg`), with a passphrase known only to the user. Its
+    sha256, as reported by the user, is
+    3d6eb9d8340a7b7600c8dcb0abb643ddd1cacaf69ac41a1db8c73c5296a2b441.
+    The image was not mounted or inspected by the developer agent.
