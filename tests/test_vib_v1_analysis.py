@@ -100,3 +100,37 @@ def test_failing_on_hard_molecules_never_counts_as_improvement():
     rows += [{"system": s, "model": "FT", "invalid": "did not converge"} for s in hardest]
     out = analyse(rows, [])
     assert out["H1_FT_vs_BVPT2"]["delta"] >= -1e-12 and not out["any_improvement"]
+
+
+def test_per_molecule_exception_rule(monkeypatch):
+    # red-team report #6 B1: exceptions are handled by a pre-registered rule, never post hoc
+    import umaexp.vib_v1 as v
+
+    class M:
+        system_id = "X"
+
+    def boom(*a, **k):
+        raise ZeroDivisionError("secret detail")
+
+    monkeypatch.setattr(v, "base_precompute", boom)
+    rec = v.safe_precompute(None, M())
+    assert rec["error"] == "ZeroDivisionError" and rec["n_scored"] == 0 and "secret" not in str(rec)
+
+    base_row = {"system": "X", "model": "B", "prediction": 1.0}
+    monkeypatch.setattr(v, "mode_table", lambda name, *a, **k: boom() if name == "FT" else [dict(base_row, model=name)])
+    monkeypatch.setattr(v, "selfconsistent_rows", lambda *a, **k: [dict(base_row, model="FT-selfconsistent")])
+    monkeypatch.setattr(v, "drift", boom)
+    rows, d, err = v.score_molecule(None, None, M(), {}, 1.0)
+    assert err is None and d == {"system": "X", "error": "ZeroDivisionError"}
+    assert [r["model"] for r in rows] == ["B-VPT2", "B-scale", "FT", "FT-selfconsistent"]
+    assert rows[2]["invalid"] == "exception: ZeroDivisionError"
+    monkeypatch.setattr(v, "mode_table", boom)
+    assert v.score_molecule(None, None, M(), {}, 1.0) == ([], None, "ZeroDivisionError")
+
+
+def test_missing_drift_values_are_counted():
+    from umaexp.vib_v1 import analyse
+
+    ok = {"system": "m0", "force_rms_dev": 0.01, "rel_energy_rms_dev": 0.001, "energy_offset_per_atom": 0.0}
+    out = analyse(_rows(0.0), [ok, {"system": "m1", "error": "RuntimeError"}])
+    assert out["drift_missing"] == 1 and out["drift"]["exceeds_force"] is False

@@ -380,3 +380,19 @@ could have influenced it. Append only. Corrections are added as new entries.
     sha256, as reported by the user, is
     3d6eb9d8340a7b7600c8dcb0abb643ddd1cacaf69ac41a1db8c73c5296a2b441.
     The image was not mounted or inspected by the developer agent.
+- **D-29 (2026-10-09; red-team report #6, B1; before the PROTOCOL freeze).**
+  - **Per-molecule exception rule, pre-registered in PROTOCOL §5:**
+    - an exception in the base precompute or base scoring excludes the
+      molecule for every model (counted; exception type only);
+    - an exception in FT or FT-selfconsistent evaluation is an invalid
+      prediction, imputed conservatively;
+    - an exception in the drift calculation is a missing drift value, counted.
+  - **Code:** `vib_v1.safe_precompute` and `vib_v1.score_molecule`, used by the
+    unblinding loop and the Dev precompute. The unblinding loop no longer
+    prints molecule names. Results record `excluded_molecules`.
+  - **Tests:** a raising molecule, and missing drift values.
+  - **Rehearsal of the patched script on D_pilot (structural fields only):**
+    12 molecules scored, 0 invalid, 1 excluded (NH3, empty scored set), 14
+    sensitivity entries, drift present.
+  - **§1 text:** ethanol had no qualifying page and is in neither set.
+  - S2 files and §2 text unchanged (`verify_s2` passes).

@@ -27,7 +27,7 @@ import torch
 from umaexp.losses.objective import FamilyWeight
 from umaexp.potential import UMAPotential, select_parameters
 from umaexp.training import Trainer, TrainerConfig
-from umaexp.vib_v1 import ROOT, base_precompute, load_dev_molecules, make_task, save_precompute
+from umaexp.vib_v1 import ROOT, load_dev_molecules, make_task, safe_precompute, save_precompute
 
 logging.getLogger("fairchem").setLevel(logging.ERROR)
 OUT = os.path.join(ROOT, "runs", "vib_v1", "base")
@@ -41,7 +41,11 @@ def precompute(only: set[str] | None):
         if only and m.system_id not in only:
             continue
         t = time.time()
-        rec = base_precompute(pot, m)
+        rec = safe_precompute(pot, m)  # exception rule: PROTOCOL 5
+        if rec.get("error"):
+            save_precompute(rec, OUT)
+            print(f"{m.system_id:10s} EXCLUDED: base precompute raised {rec['error']}", flush=True)
+            continue
         rec["provenance"] = {"checkpoint": pot._checkpoint_path, "sha256": pot.provenance.checkpoint_sha256,
                              "initial_geometry": m.system.provenance.get("initial_geometry", "rdkit")}
         save_precompute(rec, OUT)

@@ -34,12 +34,10 @@ from umaexp.vib_v1 import (  # noqa: E402
     Molecule,
     _system_for,
     analyse,
-    base_precompute,
-    drift,
     load_dev_molecules,
     lsq_scale,
-    mode_table,
-    selfconsistent_rows,
+    safe_precompute,
+    score_molecule,
 )
 
 logging.getLogger("fairchem").setLevel(logging.ERROR)
@@ -100,7 +98,7 @@ def main():
         out = os.path.join(ROOT, "runs", "vib_v1", "rehearsal", stamp)
         mols = [m for m in load_dev_molecules()[0] if m.system_id in dev_pre]
         ft = load_ft(base, a.ft)
-        pre = ({m.system_id: base_precompute(base, m) for m in mols} if a.recompute
+        pre = ({m.system_id: safe_precompute(base, m) for m in mols} if a.recompute
                else {m.system_id: dev_pre[m.system_id] for m in mols})
     else:
         frozen = verify_frozen(bugfix=a.bugfix_reason is not None)
@@ -117,21 +115,28 @@ def main():
             f.write(f"{stamp} started {a.bugfix_reason or 'first run'}\n")
         mols = sealed_molecules()
         ft = load_ft(base, os.path.join(ROOT, frozen["checkpoint"]["path"]))
-        pre = {m.system_id: base_precompute(base, m) for m in mols}
+        pre = {m.system_id: safe_precompute(base, m) for m in mols}
     os.makedirs(out, exist_ok=True)
     scale = lsq_scale(dev_pre)
-    rows, drifts = [], []
-    for m in mols:
-        if pre[m.system_id]["n_scored"] == 0:
+    rows, drifts, excluded = [], [], {}
+    for m in mols:  # exception rule: PROTOCOL 5 (only exception types are recorded)
+        p = pre[m.system_id]
+        if p.get("error"):
+            excluded[m.system_id] = f"base precompute exception: {p['error']}"
             continue
-        rows += mode_table("B-VPT2", base, m, pre[m.system_id])
-        rows += mode_table("B-scale", base, m, pre[m.system_id], scale=scale)
-        rows += mode_table("FT", ft, m, pre[m.system_id])
-        rows += selfconsistent_rows(ft, m, pre[m.system_id])
-        drifts.append(drift(base, ft, m, pre[m.system_id]))
-        print(f"scored {m.system_id}", flush=True)
+        if p["n_scored"] == 0:
+            excluded[m.system_id] = "empty scored set"
+            continue
+        r, d, err = score_molecule(base, ft, m, p, scale)
+        if err:
+            excluded[m.system_id] = f"base scoring exception: {err}"
+            continue
+        rows += r
+        drifts.append(d)
+        print(f"scored molecule {len(drifts)}", flush=True)
     result = analyse(rows, drifts)
-    result.update({"mode": "rehearsal" if a.rehearse else "unblinded", "b_scale": scale, "n_scored_modes":
+    result.update({"excluded_molecules": excluded, "n_excluded": len(excluded),
+                   "mode": "rehearsal" if a.rehearse else "unblinded", "b_scale": scale, "n_scored_modes":
                    int(sum(r.get("model") == "FT" and "prediction" in r for r in rows))})
     pd.DataFrame(rows).to_csv(os.path.join(out, "mode_predictions.csv"), index=False)
     pd.DataFrame(drifts).to_csv(os.path.join(out, "drift.csv"), index=False)

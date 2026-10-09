@@ -38,7 +38,8 @@ Each freeze needs the critic's written sign-off.
   values were never read and inform nothing.
 * **Ethanol (a G2 candidate):** its real-weight energy was computed in the
   Stage-0 audit, before the draw (no vibrational quantity). It is therefore
-  forced into D_ext (§2.4).
+  forced into D_ext (§2.4) if eligible. It had no qualifying page, so it is in
+  neither set (D-27).
 * **No other model output exists** for any G2 candidate.
 * **Prior knowledge cannot be removed.** The researchers, including the AI
   agents, know literature fundamentals of common molecules. Mitigations:
@@ -285,6 +286,16 @@ Definitions and edge cases:
 * **Per-molecule error:** e_m = RMS over S_m of (ν_pred − ν_exp) in cm⁻¹.
   Degenerate modes count once.
 * **Molecules analysed:** those with a valid base model and a non-empty S_m.
+* **Exceptions (software errors on one molecule), fixed in advance:**
+  - in the base precompute or base scoring: the molecule is excluded for every
+    model and counted, with only the exception type recorded;
+  - while evaluating FT or FT-selfconsistent: an invalid prediction for that
+    model, imputed as below;
+  - in the drift calculation: a missing drift value, counted and reported next
+    to H1.
+
+  The same rule applies in the Dev precompute. No per-molecule decision is made
+  after its identity or results are known.
 * **Invalid FT predictions:**
   - the optimization does not converge;
   - any vibrational wavenumber is below 0, or any scored mode is below

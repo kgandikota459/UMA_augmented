@@ -231,6 +231,38 @@ def base_precompute(potential, mol: Molecule, step: float = 0.025, fmax: float =
     return rec
 
 
+def safe_precompute(potential, mol: Molecule, **kw) -> dict:
+    """base_precompute with the pre-registered exception rule (PROTOCOL 5): an exception excludes the
+    molecule for every model; only the exception type is recorded."""
+    try:
+        return base_precompute(potential, mol, **kw)
+    except Exception as e:  # noqa: BLE001
+        return {"system_id": mol.system_id, "error": type(e).__name__, "n_scored": 0, "modes": [],
+                "merged_classes": [], "notes": [f"base precompute raised {type(e).__name__}"]}
+
+
+def score_molecule(base, ft, mol: Molecule, pre: dict, scale: float) -> tuple[list[dict], dict | None, str | None]:
+    """Rows for all models and the drift row for one molecule, under the exception rule (PROTOCOL 5):
+    base-side exception -> molecule excluded for every model (returns its type); FT or FT-selfconsistent
+    exception -> invalid prediction for that model; drift exception -> missing drift value."""
+    sid = mol.system_id
+    try:
+        rows = mode_table("B-VPT2", base, mol, pre) + mode_table("B-scale", base, mol, pre, scale=scale)
+    except Exception as e:  # noqa: BLE001
+        return [], None, type(e).__name__
+    for name, fn in (("FT", lambda: mode_table("FT", ft, mol, pre)),
+                     ("FT-selfconsistent", lambda: selfconsistent_rows(ft, mol, pre))):
+        try:
+            rows += fn()
+        except Exception as e:  # noqa: BLE001
+            rows.append({"system": sid, "model": name, "invalid": f"exception: {type(e).__name__}"})
+    try:
+        d = drift(base, ft, mol, pre)
+    except Exception as e:  # noqa: BLE001
+        d = {"system": sid, "error": type(e).__name__}
+    return rows, d, None
+
+
 def save_precompute(rec: dict, out_dir: str) -> str:
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, f"{rec['system_id']}.json")
@@ -505,6 +537,10 @@ def analyse(rows: list[dict], drift_rows: list[dict], seed: int = 20261006) -> d
     loo = [float((d.sum() - d.loc[k]) / (len(d) - 1)) for k in d.index] if len(d) > 2 else []
     sens["loo_delta_range"] = [min(loo), max(loo)] if loo else None
     out["sensitivity"] = sens
+    n_drift_missing = sum("error" in r for r in drift_rows)
+    drift_rows = [r for r in drift_rows if "error" not in r]
+    if n_drift_missing:
+        out["drift_missing"] = n_drift_missing
     if drift_rows:
         dr = pd.DataFrame(drift_rows)
         out["drift"] = {"force_rms_dev_max": float(dr.force_rms_dev.max()),
