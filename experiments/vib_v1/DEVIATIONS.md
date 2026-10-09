@@ -66,7 +66,9 @@ critic's verdict. T is still sealed for every entry unless stated.
 * **Consequences:** the CV, selection, final FT and rehearsals of D-34 are
   void. They are set aside (runs/vib_v1/void_dv03/) and rerun as registered,
   saving one CV-fold checkpoint for the real-path rehearsal.
-* **Critic verdict:** pending.
+* **Critic verdict:** accepted (red-team report #10, 2026-10-09). The 0.19 cm⁻¹
+  aziridine difference is left as a known limit; residual mixing of numerically
+  degenerate modes of different symmetry fails closed and is acceptable.
 
 ## Considered and declined (no code change)
 

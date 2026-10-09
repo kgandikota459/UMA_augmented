@@ -487,3 +487,15 @@ could have influenced it. Append only. Corrections are added as new entries.
     aziridine, symmetrized-Hessian case); the D-34 final FT gives 0 invalid.
   - The CV selection, final FT and rehearsals of D-34 are void and will be
     rerun after the critic's verdict on DV-03.
+- **D-36 (2026-10-09). Critic verdict on DV-03; D-34 outputs voided; rerun.**
+  - Red-team report #10 accepted DV-03 and gave GO to rerun.
+  - Known limit: with FT = base, aziridine's predictions differ from B-VPT2 by
+    0.19 cm⁻¹ (base ω from the symmetrized Hessian, evaluation from the raw
+    one; self-overlap 0.85). Left unchanged.
+  - The D-34 CV table, selection, final FT, in-sample errors, drift values and
+    rehearsals are void and moved to runs/vib_v1/void_dv03/. Those numbers
+    have been seen; they inform nothing in the rerun.
+  - Rerun exactly as registered: same folds, caps, steps, seeds and selection
+    rule; whatever the rule selects is taken. `--save-ft` is on so that a
+    post-fix CV-fold checkpoint exists for the rehearsal (it only writes
+    trainable tensors after each run).
