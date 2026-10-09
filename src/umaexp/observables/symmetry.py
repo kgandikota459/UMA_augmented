@@ -312,6 +312,13 @@ def assign_by_symmetry(pg: PointGroup, groups: list[ModeGroup], exp_species: lis
     fixed = {s_: next(iter(rs)) for s_, rs in possible.items() if len(rs) == 1 and s_ not in excluded_species}
     for s_, r in fixed.items():  # one species <-> one irrep: number order vs frequency order (value-free)
         ei = sorted([i for i, x in enumerate(exp_species) if x == s_], key=lambda i: exp_numbers[i])
+        vals = [exp_values[i] for i in ei]
+        if any(not np.isfinite(v) for v in vals) or any(b > a for a, b in zip(vals, vals[1:])):
+            # DEVIATIONS.md DV-01: the source does not number this species in descending frequency
+            # (or a value is missing), so number order cannot be matched to frequency order: fail closed
+            excluded += ei
+            notes.append(f"species {s_}: tabulated values not in descending order by mode number; excluded")
+            continue
         gs = sorted(irreps[r], key=lambda gi: -groups[gi].eigenvalue)
         matches += [(e, groups[gi].indices) for e, gi in zip(ei, gs)]
     rest = [s_ for s_ in possible if s_ not in fixed and s_ not in excluded_species]

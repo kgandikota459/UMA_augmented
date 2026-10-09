@@ -418,3 +418,22 @@ could have influenced it. Append only. Corrections are added as new entries.
     §3.3 rule; no code change).
   - No deviation was needed. Cross-validation is launched as pre-registered:
     3 folds, caps {3e-4, 1e-3, 3e-3}, 60 steps, scored every 10, batch 8.
+- **D-32 (2026-10-09; Dev only). Deviation DV-01 and its effect.**
+  - The D-31 precompute hid a silent misassignment in cyclobutane (base RMS
+    922 cm⁻¹; Dev median 13.8): its source table does not number species in
+    descending frequency. This was seen from the first CV training loss (534,
+    then 1.6) and confirmed from the Dev precompute.
+  - The CV launched under D-31 was stopped within 3 training steps. Its outputs
+    are set aside unread in runs/vib_v1/cv_aborted/.
+  - DV-01 (DEVIATIONS.md): a species whose tabulated values are not in
+    descending order by mode number is excluded for every model. Label-only,
+    mechanical, fail closed.
+  - Dev precompute re-run under DV-01: 30 molecules, no exceptions; 181 scored
+    modes over 28 molecules (cyclobutane and NH3 have none). Exclusions: 111
+    source flags, 13 symmetry-class exclusions (6 CH2OCH2 count mismatch, 7
+    under DV-01), 12 with ω < 400 cm⁻¹, 5 resonance weight, 2 torsions.
+  - Largest remaining base RMS errors: F2O 104.9, CH3CN 52.5, CH2NHCH2 52.0,
+    CF3CN 46.6, C3H4 (D2d) 40.6; median 13.7. F2O is a 3-mode C2v molecule with
+    one mode per slot, so its error is not an assignment artifact; it is left
+    in as a model error.
+  - CV restarts only after the critic's verdict on DV-01.

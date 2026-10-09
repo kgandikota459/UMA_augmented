@@ -119,9 +119,13 @@ def test_assignment_never_uses_measured_values_outside_merged_classes():
     sp, num = [o.labels["species"] for o in obs], [o.labels["mode_number"] for o in obs]
     ref = assign_by_symmetry(pg, groups, sp, num, [o.value for o in obs], "Td")
     rng = np.random.default_rng(0)
-    for _ in range(5):
-        shuffled = list(rng.uniform(100, 4000, len(obs)))
-        assert assign_by_symmetry(pg, groups, sp, num, shuffled, "Td").matches == ref.matches
+    for _ in range(5):  # different values, still descending by mode number within each species (DV-01)
+        other = [0.0] * len(obs)
+        for s_ in set(sp):
+            idx = sorted([i for i, x in enumerate(sp) if x == s_], key=lambda i: num[i])
+            for i, v in zip(idx, sorted(rng.uniform(100, 4000, len(idx)), reverse=True)):
+                other[i] = float(v)
+        assert assign_by_symmetry(pg, groups, sp, num, other, "Td").matches == ref.matches
 
 
 def test_missing_species_is_resolved_by_counts_and_reported_as_orphan():
@@ -203,3 +207,18 @@ def test_td_t2_species_are_symmetric_under_sigma_d():
     assert pg.name == "Td" and pg.cubic
     t_groups = [g for g in groups if len(g.indices) == 3]
     assert t_groups and all(all(np.sign(g.characters[k]) > 0 for k in pg.idx_sigma_all) for g in t_groups)
+
+
+def test_species_not_numbered_in_descending_frequency_is_excluded():
+    # DEVIATIONS.md DV-01 (found on Dev cyclobutane): numbering that is not descending fails closed
+    obs = sorted(_dev_tables()["H2CO"], key=lambda o: o.labels["mode_number"])
+    pg, groups, _ = _toy_modes("H2CO")
+    sp, num = [o.labels["species"] for o in obs], [o.labels["mode_number"] for o in obs]
+    vals = [o.value for o in obs]
+    ref = assign_by_symmetry(pg, groups, sp, num, vals, "C2v")
+    a1 = [i for i, x in enumerate(sp) if x == "a1"]
+    swapped = list(vals)
+    swapped[a1[0]], swapped[a1[1]] = swapped[a1[1]], swapped[a1[0]]
+    res = assign_by_symmetry(pg, groups, sp, num, swapped, "C2v")
+    assert set(a1) <= set(res.excluded_exp) and not set(a1) & {e for e, _ in res.matches}
+    assert [m for m in res.matches] == [m for m in ref.matches if m[0] not in a1]  # other species untouched
