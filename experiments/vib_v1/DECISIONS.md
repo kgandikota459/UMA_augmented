@@ -448,3 +448,31 @@ could have influenced it. Append only. Corrections are added as new entries.
     §8; the same may occur in T); F2O, CH3CN, CF3CN and allene are model
     errors on F–O and multiple-bond stretches.
   - CV restarted as pre-registered on 28 molecules with 181 scored modes.
+- **D-34 (2026-10-09). CV selection, final FT, dress rehearsal.**
+  - CV (3 folds × caps {3e-4, 1e-3, 3e-3}, 60 steps, scored every 10) ran to
+    completion with no errors. Best CV mean e_m: cap 3e-3, step 10 (21.00).
+    Eligible under the one-SE rule: cap 1e-3 step 60 and cap 3e-3 steps
+    10–40. Smallest eligible cap, then fewest steps: **cap 1e-3, step 60**
+    (CV mean e_m 21.41; mean Δ vs B-VPT2 −0.73 cm⁻¹, SD 12.94, n = 28, one
+    invalid held-out molecule). Epoch-matched final steps: 90.
+    `cv_selection.json` sha256 e70aee8f…0946a.
+  - The CV Δ is far inside its noise (SE ≈ 2.4) and short of the MEI; a null
+    result on T is the expected outcome. The test is run regardless.
+  - Final FT: all 28 Dev molecules, cap 1e-3, 90 steps, batch 8.
+    `ft_readout.pt` sha256 526791bb…fb58b. In-sample Dev mean e_m 12.8 (base
+    22.1); in-sample only.
+  - Dev drift of the final FT: force RMS deviation 0.173 eV/Å on F2O, above
+    the 0.05 bound; all other Dev molecules below it (next: CF3CN 0.049).
+    Relative-energy bound met everywhere (max 0.0074 eV). The protocol gives
+    no remedy and the model is fixed by the registered procedure; nothing is
+    changed. Recorded as a Dev-side harm signal to be reported with the
+    result.
+  - Dress rehearsal on Dev (real path): (a) CV-fold FT with the base
+    precompute recomputed from the parquet (run 20261009T164626Z): 30
+    molecules, no exceptions, 181 scored modes as stored, largest numeric
+    difference to the stored precompute 2e-4; 28 molecules analysed, 2
+    excluded (NH3, cyclobutane: empty scored set); 1 FT-invalid molecule
+    (allene, tracking) imputed conservatively. (b) Final FT with the stored
+    precompute (run 20261009T173108Z): same structure; 2 FT-invalid molecules
+    (allene, C2H6); drift guardrail reports the F2O exceedance. All result
+    fields, the 14 sensitivity analyses and the exclusion table are produced.
