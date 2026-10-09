@@ -30,4 +30,17 @@ critic's verdict. T is still sealed for every entry unless stated.
 * **Consequences:** the cross-validation launched under D-31 was stopped
   within its first 3 steps, and its outputs set aside unread
   (runs/vib_v1/cv_aborted/). The Dev precompute is re-run before CV restarts.
-* **Critic verdict:** pending.
+* **Critic verdict:** accepted (red-team report #8, 2026-10-09), as written:
+  whole-species exclusion, exact ties allowed, no tolerance. When exclusions
+  are reported by reason, DV-01 cases are counted from the `notes` field.
+
+## Considered and declined (no code change)
+
+* **DV-02 (proposed by the critic, declined 2026-10-09).** Oxirane loses 6
+  usable modes because two B modes of different symmetry lie 4.4 cm⁻¹ apart and
+  are slightly mixed, so the class counts fail and the class is excluded. The
+  proposal was to trigger the symmetrized-Hessian fallback whenever a character
+  differs from an integer by more than 0.05. Declined: the current behaviour
+  already fails closed, and the threshold would sit just below oxirane's own
+  value (0.054), which makes it a rule tuned to one Dev molecule after the
+  freeze. Such cases stay excluded, for Dev and T alike.

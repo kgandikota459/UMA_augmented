@@ -437,3 +437,14 @@ could have influenced it. Append only. Corrections are added as new entries.
     one mode per slot, so its error is not an assignment artifact; it is left
     in as a model error.
   - CV restarts only after the critic's verdict on DV-01.
+- **D-33 (2026-10-09). Critic verdict on DV-01; DV-02 declined; CV restarted.**
+  - Red-team report #8 accepted DV-01 as written and gave GO to restart CV.
+  - The critic's optional DV-02 (a wider trigger for the symmetrized-Hessian
+    fallback, recovering 6 oxirane modes) is declined; reasons in
+    DEVIATIONS.md.
+  - Critic's findings on the other high-error Dev molecules, recorded as
+    known limits: aziridine's errors look like a source a′/a″ labelling
+    disagreement that no label-free rule can detect (label-quality threat,
+    §8; the same may occur in T); F2O, CH3CN, CF3CN and allene are model
+    errors on F–O and multiple-bond stretches.
+  - CV restarted as pre-registered on 28 molecules with 181 scored modes.
