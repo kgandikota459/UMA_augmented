@@ -476,3 +476,14 @@ could have influenced it. Append only. Corrections are added as new entries.
     precompute (run 20261009T173108Z): same structure; 2 FT-invalid molecules
     (allene, C2H6); drift guardrail reports the F2O exceedance. All result
     fields, the 14 sensitivity analyses and the exclusion table are produced.
+- **D-35 (2026-10-09). MODEL review NO-GO; deviation DV-03 (mode tracking).**
+  - Red-team report #9 refused the MODEL sign-off: tracking marked fully
+    projected degenerate pairs as invalid when the new model's mode grouping
+    split them (details and evidence in DEVIATIONS.md DV-03). Everything else
+    in the package was verified without issue, and the critic agreed the F2O
+    drift exceedance is to be reported, not tuned away.
+  - Fix: `track_modes` now assigns individual modes by projection. Acceptance
+    on Dev: FT = base gives 0 invalid of 28 and Δ = 0 (≤ 8e-4 cm⁻¹; 0.19 on
+    aziridine, symmetrized-Hessian case); the D-34 final FT gives 0 invalid.
+  - The CV selection, final FT and rehearsals of D-34 are void and will be
+    rerun after the critic's verdict on DV-03.

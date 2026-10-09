@@ -318,27 +318,26 @@ def assign_modes(
 
 def track_modes(reference_modes: np.ndarray, matches: list[ModeMatch], new_modes: np.ndarray,
                 new_nu: np.ndarray, new_groups: list[list[int]] | None = None) -> list[ModeMatch]:
-    """Re-identify matched modes after an update by subspace overlap (Hungarian).
+    """Re-identify matched modes after an update by subspace projection (Hungarian over modes).
 
     reference_modes/new_modes: (3N, n_vib) mass-weighted eigenvectors.
-    Degenerate targets are compared as subspaces (sum of squared overlaps).
+    A match of dimension d takes the d new modes with the largest weight in its reference subspace,
+    one-to-one across matches; overlap = (sum of those squared projections) / d.
     """
-    # irrep-pure groups when given (critic report #3 P2): a frequency tolerance merges accidentally
-    # near-degenerate modes of different symmetry
-    new_groups = new_groups if new_groups is not None else degenerate_groups(new_nu)
-    cost = np.zeros((len(matches), len(new_groups)))
-    for a, m in enumerate(matches):
-        R = reference_modes[:, m.comp_indices]
-        for b, g in enumerate(new_groups):
-            ov = (R.T @ new_modes[:, g]) ** 2
-            size_pen = 0.0 if len(g) == len(m.comp_indices) else 1.0
-            cost[a, b] = -ov.sum() / len(m.comp_indices) + size_pen
-    r, c = linear_sum_assignment(cost)
+    # DEVIATIONS.md DV-03: assignment is over individual modes, not over a grouping of the new modes.
+    # A grouping (frequency window or irrep detection) that splits a degenerate pair, or differs from
+    # the base one, used to turn a full-projection match into overlap 0 through a size penalty.
+    # new_nu and new_groups are kept for the call signature and are not used.
+    if not matches:
+        return []
+    rows = [a for a, m in enumerate(matches) for _ in m.comp_indices]
+    weight = np.stack([((reference_modes[:, matches[a].comp_indices].T @ new_modes) ** 2).sum(axis=0) for a in rows])
+    r, c = linear_sum_assignment(-weight)
     out = []
-    for a, b in zip(r, c):
-        overlap = -cost[a, b]
-        out.append(ModeMatch(matches[a].exp_index, list(new_groups[b]),
-                             ambiguous=overlap < 0.8, note=f"overlap={overlap:.3f}"))
+    for a, m in enumerate(matches):
+        picked = sorted(int(j) for i, j in zip(r, c) if rows[i] == a)
+        overlap = float(sum(weight[i, j] for i, j in zip(r, c) if rows[i] == a)) / len(m.comp_indices)
+        out.append(ModeMatch(m.exp_index, picked, ambiguous=overlap < 0.8, note=f"overlap={overlap:.3f}"))
     return sorted(out, key=lambda m: m.exp_index)
 
 

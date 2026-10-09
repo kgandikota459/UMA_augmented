@@ -34,6 +34,40 @@ critic's verdict. T is still sealed for every entry unless stated.
   whole-species exclusion, exact ties allowed, no tolerance. When exclusions
   are reported by reason, DV-01 cases are counted from the `notes` field.
 
+## DV-03 (2026-10-09): mode tracking by projection over modes, not over groups
+
+* **Found on:** Dev, by the critic at the MODEL-stage review (red-team report
+  #9, NO-GO). No T information is involved; T is still sealed.
+* **Problem.** PROTOCOL §3 anchors every non-base model to the base assignment
+  by eigenvector-subspace tracking with overlap ≥ 0.5. The implementation
+  matched each base subspace to a *group* of the new model's modes and added a
+  penalty of 1 when the group size differed. When the new model's grouping
+  split a degenerate pair (ethane e_g: an FT pair 1.6 cm⁻¹ from an e_u pair;
+  allene e: a pair 2.2 cm⁻¹ apart), a pair whose squared projection onto the
+  new modes is 1.00 was scored 0.00 or −0.50 and the molecule declared invalid.
+  The unchanged base model failed its own tracking on allene. Invalid molecules
+  drop out of training steps and are imputed conservatively when scored, so
+  the error biased training, CV selection and the endpoint, always against FT
+  (ethane +41 cm⁻¹, allene +9 cm⁻¹ on Dev).
+* **Change.** `track_modes` assigns individual modes: a base match of
+  dimension d takes d new modes, one-to-one across matches (Hungarian),
+  maximizing the squared projection onto its base subspace; the overlap is the
+  sum of those projections divided by d. No grouping of the new modes and no
+  size penalty enter. The 0.5 threshold and everything else are unchanged.
+* **Acceptance (Dev, real weights; runs/vib_v1/dv03_acceptance.json):**
+  - FT = base: 0 invalid of 28; predictions equal B-VPT2 to 8e-4 cm⁻¹ on 27
+    molecules and to 0.19 cm⁻¹ on aziridine, whose base assignment and ω come
+    from the group-symmetrized Hessian (self-overlap 0.85 there, 1.00
+    elsewhere).
+  - Final FT of D-34 (trained under the faulty rule): 0 invalid of 28; ethane
+    overlap 0.996, allene 0.999; lowest overlap 0.974.
+* **Files:** src/umaexp/observables/vibrational.py (`track_modes`), with
+  tests/test_track_modes.py.
+* **Consequences:** the CV, selection, final FT and rehearsals of D-34 are
+  void. They are set aside (runs/vib_v1/void_dv03/) and rerun as registered,
+  saving one CV-fold checkpoint for the real-path rehearsal.
+* **Critic verdict:** pending.
+
 ## Considered and declined (no code change)
 
 * **DV-02 (proposed by the critic, declined 2026-10-09).** Oxirane loses 6
