@@ -408,3 +408,13 @@ could have influenced it. Append only. Corrections are added as new entries.
     the frozen code tree).
   - From here DECISIONS.md is append-only, and any change under src/, scripts/
     or configs/ needs an entry in DEVIATIONS.md.
+- **D-31 (2026-10-09; Dev only). Dev precompute on D_pilot ∪ D_ext under the
+  frozen protocol.**
+  - 30 nonlinear molecules: all converged, no imaginary modes, no exceptions,
+    every point group equal to the page's, no merged classes.
+  - 187 scored modes over 29 molecules (NH3 has none).
+  - Exclusions: 111 by source flags, 12 with ω < 400 cm⁻¹, 6 by resonance
+    weight, 2 torsions, 6 by symmetry class count mismatch (excluded by the
+    §3.3 rule; no code change).
+  - No deviation was needed. Cross-validation is launched as pre-registered:
+    3 folds, caps {3e-4, 1e-3, 3e-3}, 60 steps, scored every 10, batch 8.
