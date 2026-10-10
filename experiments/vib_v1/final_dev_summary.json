@@ -1,0 +1,238 @@
+{
+ "checkpoint": "runs/vib_v1/final/ft_readout.pt",
+ "lr": 0.001,
+ "cap": 0.001,
+ "steps": 60,
+ "batch": 8,
+ "n_dev_molecules": 28,
+ "dev_drift": [
+  {
+   "system": "C2H4",
+   "force_rms_dev": 0.018554459716838938,
+   "rel_energy_rms_dev": 0.0016822636235805579,
+   "energy_offset_per_atom": 0.00032442286793260187
+  },
+  {
+   "system": "C2H6",
+   "force_rms_dev": 0.006106437288206805,
+   "rel_energy_rms_dev": 0.0010433885161402249,
+   "energy_offset_per_atom": 0.0035356220733035572
+  },
+  {
+   "system": "C3H4_D2d",
+   "force_rms_dev": 0.02565336480044247,
+   "rel_energy_rms_dev": 0.0018852543700235654,
+   "energy_offset_per_atom": -0.0035635135890613257
+  },
+  {
+   "system": "C3H6_D3h",
+   "force_rms_dev": 0.015321430730062023,
+   "rel_energy_rms_dev": 0.0016786253359259461,
+   "energy_offset_per_atom": 0.0016623848804354364
+  },
+  {
+   "system": "C4H4O",
+   "force_rms_dev": 0.020432672478996466,
+   "rel_energy_rms_dev": 0.0017411583613019073,
+   "energy_offset_per_atom": 0.0010842989044754683
+  },
+  {
+   "system": "C4H4S",
+   "force_rms_dev": 0.021799419034870742,
+   "rel_energy_rms_dev": 0.0021580021243661008,
+   "energy_offset_per_atom": -0.00047543134418851375
+  },
+  {
+   "system": "C6H6",
+   "force_rms_dev": 0.01249781760945408,
+   "rel_energy_rms_dev": 0.0020970576778383283,
+   "energy_offset_per_atom": 0.0015647865707251185
+  },
+  {
+   "system": "CF3CN",
+   "force_rms_dev": 0.037018474882515924,
+   "rel_energy_rms_dev": 0.001718875716847436,
+   "energy_offset_per_atom": 0.006265278316489761
+  },
+  {
+   "system": "CH2NHCH2",
+   "force_rms_dev": 0.02186763391934669,
+   "rel_energy_rms_dev": 0.0021572520594714054,
+   "energy_offset_per_atom": 0.0016291413067193617
+  },
+  {
+   "system": "CH2OCH2",
+   "force_rms_dev": 0.023751723877323574,
+   "rel_energy_rms_dev": 0.0019893545915688204,
+   "energy_offset_per_atom": 0.002726293979490687
+  },
+  {
+   "system": "CH3CH2Cl",
+   "force_rms_dev": 0.009994143008492504,
+   "rel_energy_rms_dev": 0.001362682507680197,
+   "energy_offset_per_atom": 0.004499518157797411
+  },
+  {
+   "system": "CH3CN",
+   "force_rms_dev": 0.024570083515297676,
+   "rel_energy_rms_dev": 0.0014169066058339107,
+   "energy_offset_per_atom": 0.0022208362108017353
+  },
+  {
+   "system": "CH3Cl",
+   "force_rms_dev": 0.010906323971175434,
+   "rel_energy_rms_dev": 0.0012238380976179128,
+   "energy_offset_per_atom": 0.005581414499447419
+  },
+  {
+   "system": "CH3OH",
+   "force_rms_dev": 0.013946468447648852,
+   "rel_energy_rms_dev": 0.002225474866568497,
+   "energy_offset_per_atom": 0.006725132322196715
+  },
+  {
+   "system": "CH4",
+   "force_rms_dev": 0.0030421238057099544,
+   "rel_energy_rms_dev": 0.00029176312011858956,
+   "energy_offset_per_atom": 0.003517280987864524
+  },
+  {
+   "system": "D2O",
+   "force_rms_dev": 0.009991583108764966,
+   "rel_energy_rms_dev": 0.0008633809622456576,
+   "energy_offset_per_atom": 0.009566789586066686
+  },
+  {
+   "system": "F2O",
+   "force_rms_dev": 0.13329167390667515,
+   "rel_energy_rms_dev": 0.005687291308450783,
+   "energy_offset_per_atom": -0.09022045593646909
+  },
+  {
+   "system": "H2CO",
+   "force_rms_dev": 0.029038980244517457,
+   "rel_energy_rms_dev": 0.001565274915625591,
+   "energy_offset_per_atom": 0.0020615622648790578
+  },
+  {
+   "system": "H2O",
+   "force_rms_dev": 0.009949368317489778,
+   "rel_energy_rms_dev": 0.0008573297169823855,
+   "energy_offset_per_atom": 0.009562669101675662
+  },
+  {
+   "system": "H2S",
+   "force_rms_dev": 0.00417400940419107,
+   "rel_energy_rms_dev": 0.0005469751956547999,
+   "energy_offset_per_atom": 0.00983745520619171
+  },
+  {
+   "system": "HCCl3",
+   "force_rms_dev": 0.02088437109580427,
+   "rel_energy_rms_dev": 0.0014932791109518926,
+   "energy_offset_per_atom": 0.008409923837971293
+  },
+  {
+   "system": "HCOOCH3",
+   "force_rms_dev": 0.013766862468154223,
+   "rel_energy_rms_dev": 0.0013695643336063413,
+   "energy_offset_per_atom": 0.003978966937154382
+  },
+  {
+   "system": "HCOOH",
+   "force_rms_dev": 0.014417514417753118,
+   "rel_energy_rms_dev": 0.001072686770416565,
+   "energy_offset_per_atom": 0.004647929109287361
+  },
+  {
+   "system": "PF3",
+   "force_rms_dev": 0.00623962388000905,
+   "rel_energy_rms_dev": 0.000511379947222715,
+   "energy_offset_per_atom": -0.009086001658442911
+  },
+  {
+   "system": "PH3",
+   "force_rms_dev": 0.02875683139416612,
+   "rel_energy_rms_dev": 0.0017100452846683827,
+   "energy_offset_per_atom": -0.013357495935565566
+  },
+  {
+   "system": "SiCl4",
+   "force_rms_dev": 0.01675433953004803,
+   "rel_energy_rms_dev": 0.002667105198001192,
+   "energy_offset_per_atom": -0.00643909527330834
+  },
+  {
+   "system": "SiF4",
+   "force_rms_dev": 0.007443562607553313,
+   "rel_energy_rms_dev": 0.0005189111677812209,
+   "energy_offset_per_atom": -0.019417401446698932
+  },
+  {
+   "system": "isobutene",
+   "force_rms_dev": 0.012814077895298509,
+   "rel_energy_rms_dev": 0.002050849772605296,
+   "energy_offset_per_atom": 0.0012318308206734703
+  }
+ ],
+ "in_sample_dev_errors_ft": {
+  "C2H4": 13.366037165961279,
+  "C2H6": 6.0922588471828165,
+  "C3H4_D2d": 25.054321329411934,
+  "C3H6_D3h": 15.759571066182058,
+  "C4H4O": 9.50836673192999,
+  "C4H4S": 8.634358842440735,
+  "C6H6": 11.737848674299727,
+  "CF3CN": 28.481212960062365,
+  "CH2NHCH2": 50.345263670219154,
+  "CH2OCH2": 4.443247942898224,
+  "CH3CH2Cl": 28.298426328209718,
+  "CH3CN": 36.71705952184386,
+  "CH3Cl": 4.4074103473991455,
+  "CH3OH": 7.090780647300082,
+  "CH4": 9.274812738939467,
+  "D2O": 3.3673801755426527,
+  "F2O": 34.895504029382124,
+  "H2CO": 21.729684891104565,
+  "H2O": 5.497566125788791,
+  "H2S": 13.30282071846585,
+  "HCCl3": 2.1581229540328217,
+  "HCOOCH3": 12.479852018490202,
+  "HCOOH": 22.281819229280167,
+  "PF3": 11.756044424015741,
+  "PH3": 10.369109330206498,
+  "SiCl4": 4.439204544471522,
+  "SiF4": 10.505221463139605,
+  "isobutene": 19.428522043109936
+ },
+ "dev_errors_base": {
+  "CH4": 12.182412479627189,
+  "H2S": 10.287353860648132,
+  "C4H4S": 13.514254186596384,
+  "C3H4_D2d": 40.58949580991582,
+  "C2H4": 12.425514526289305,
+  "SiCl4": 1.758606972569396,
+  "CH3CH2Cl": 28.64536325154418,
+  "PF3": 11.238867460349676,
+  "CH3CN": 52.52165893960504,
+  "isobutene": 21.764251049180654,
+  "C6H6": 11.262798905261224,
+  "F2O": 104.91722472612531,
+  "CH3Cl": 9.119681656232267,
+  "PH3": 12.066888662421904,
+  "C4H4O": 16.69548630513028,
+  "H2O": 14.80003454332141,
+  "D2O": 11.559212183176003,
+  "HCOOH": 22.761744056765334,
+  "CH2OCH2": 14.08769415273726,
+  "SiF4": 15.294655341991756,
+  "H2CO": 30.83710153708381,
+  "HCOOCH3": 13.840372649792752,
+  "CF3CN": 46.623353467300554,
+  "C3H6_D3h": 13.526650932920877,
+  "CH2NHCH2": 52.02180776731187,
+  "HCCl3": 6.906378209992165,
+  "C2H6": 8.870006414814238,
+  "CH3OH": 9.931622777881216
+ }
+}

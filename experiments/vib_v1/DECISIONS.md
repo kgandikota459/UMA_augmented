@@ -499,3 +499,31 @@ could have influenced it. Append only. Corrections are added as new entries.
     rule; whatever the rule selects is taken. `--save-ft` is on so that a
     post-fix CV-fold checkpoint exists for the rehearsal (it only writes
     trainable tensors after each run).
+- **D-37 (2026-10-10). Rerun under DV-03: CV selection, final FT, rehearsals.**
+  - CV rerun as registered (same folds, caps, steps, seeds), with `--save-ft`.
+    No errors; no invalid held-out molecule in any of the 18 configurations.
+  - `select` first failed with KeyError 'trace': its glob also matched the
+    `*_ft.pt.json` metadata written by `--save-ft`. The checkpoints and their
+    metadata were moved to runs/vib_v1/cv/grid_ft/ and `select` re-run; no
+    code change, the 9 fold result files are untouched.
+  - Best CV mean e_m: cap 3e-3, step 50 (18.36). Eligible under the one-SE
+    rule: cap 1e-3 steps 40 and 60; cap 3e-3 steps 10, 20, 40, 50. Smallest
+    eligible cap, then fewest steps: **cap 1e-3, step 40** (CV mean e_m 18.52;
+    mean Δ vs B-VPT2 −3.63 cm⁻¹, SD 5.94, n = 28, 0 invalid). Epoch-matched
+    final steps: 60. `cv_selection.json` sha256 f5d5ef45…c117.
+  - Final FT: all 28 Dev molecules, cap 1e-3, 60 steps, batch 8.
+    `ft_readout.pt` sha256 0c1317a8…bba3; `final_dev_summary.json` sha256
+    33140630…727b. In-sample Dev mean e_m 15.4 (base 22.1); in-sample only.
+  - Dev drift of the final FT: force RMS deviation 0.133 eV/Å on F2O, above
+    the 0.05 bound; all others below (next: CF3CN 0.037). Energy bound met
+    (max 0.0057 eV). Nothing is changed (§5.1: reported as harm).
+  - Dress rehearsals on Dev, real path, all with 28 molecules analysed, 2
+    excluded (NH3, cyclobutane: empty scored set), 181 scored modes, 0 invalid
+    for every model, 14 sensitivity analyses produced:
+    (a) 20261010T203000Z: post-fix CV-fold FT (fold 0, cap 1e-3), base
+        precompute recomputed from the parquet (matches the stored one to
+        1.5e-4);
+    (b) 20261010T210953Z: FT = base; Δ = 0.0, drift 0;
+    (c) 20261010T213034Z: final FT; drift guardrail flags the F2O exceedance.
+    The first attempt at (a) was cut off by a time limit before writing
+    results and was simply restarted.
