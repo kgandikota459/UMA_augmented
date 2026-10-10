@@ -527,3 +527,14 @@ could have influenced it. Append only. Corrections are added as new entries.
     (c) 20261010T213034Z: final FT; drift guardrail flags the F2O exceedance.
     The first attempt at (a) was cut off by a time limit before writing
     results and was simply restarted.
+- **D-38 (2026-10-10). MODEL stage frozen.**
+  - Red-team report #11: GO, with a verbatim sign-off stored in FROZEN.json
+    (audited commit 86e2669).
+  - FROZEN.json written 2026-10-10T21:53:33Z, record sha256
+    12ccd5c51a9e6e38882bf6dd387639ac2edf3ef18fd00c4fea393b4d0349e109; code
+    diff since the PROTOCOL freeze sha256 4ab9192d…6ce0 (symmetry.py,
+    vibrational.py).
+  - Next and last step: the single unblinding run (PROTOCOL §7). Expectations
+    stated before it: Dev CV Δ −3.63 cm⁻¹ (SD 5.94, n = 28); T has 17
+    molecules, so the interval will be wide; one Dev molecule exceeds the
+    force-drift bound.
