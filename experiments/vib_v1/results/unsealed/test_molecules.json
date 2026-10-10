@@ -1,0 +1,138 @@
+[
+ {
+  "g2_name": "C3H8",
+  "nist_id": "C74986",
+  "smiles": "CCC",
+  "inchikey": "ATUOYWHBWRKTHZ-UHFFFAOYSA-N",
+  "tag": "768a1bf483a5",
+  "n_label_usable": 20
+ },
+ {
+  "g2_name": "H3CNH2",
+  "nist_id": "C74895",
+  "smiles": "CN",
+  "inchikey": "BAVYZALUXZFZLV-UHFFFAOYSA-N",
+  "tag": "79aaddaf2029",
+  "n_label_usable": 11
+ },
+ {
+  "g2_name": "C2F4",
+  "nist_id": "C116143",
+  "smiles": "FC(F)=C(F)F",
+  "inchikey": "BFKJFAAPBSQJPD-UHFFFAOYSA-N",
+  "tag": "3425248fbb47",
+  "n_label_usable": 9
+ },
+ {
+  "g2_name": "SiH4",
+  "nist_id": "C7803625",
+  "smiles": "[SiH4]",
+  "inchikey": "BLRPTPMANUNPDV-UHFFFAOYSA-N",
+  "tag": "f3c31f17896b",
+  "n_label_usable": 3
+ },
+ {
+  "g2_name": "CH3COCH3",
+  "nist_id": "C67641",
+  "smiles": "CC(C)=O",
+  "inchikey": "CSCPPACGZOOCGX-UHFFFAOYSA-N",
+  "tag": "ba9a871d666b",
+  "n_label_usable": 12
+ },
+ {
+  "g2_name": "NF3",
+  "nist_id": "C7783542",
+  "smiles": "FN(F)F",
+  "inchikey": "GVGCUCJTUSOZKP-UHFFFAOYSA-N",
+  "tag": "ea10f2addb4c",
+  "n_label_usable": 4
+ },
+ {
+  "g2_name": "CH3CHO",
+  "nist_id": "C75070",
+  "smiles": "CC=O",
+  "inchikey": "IKHGUXGNUITLKF-UHFFFAOYSA-N",
+  "tag": "3bd15a2be946",
+  "n_label_usable": 13
+ },
+ {
+  "g2_name": "COF2",
+  "nist_id": "C353504",
+  "smiles": "O=C(F)F",
+  "inchikey": "IYRWEQXVUNLMAY-UHFFFAOYSA-N",
+  "tag": "050f9b3b74e8",
+  "n_label_usable": 6
+ },
+ {
+  "g2_name": "CH3COF",
+  "nist_id": "C557993",
+  "smiles": "CC(=O)F",
+  "inchikey": "JUCMRTZQCZRJDC-UHFFFAOYSA-N",
+  "tag": "3bd11773f145",
+  "n_label_usable": 14
+ },
+ {
+  "g2_name": "CH3OCH3",
+  "nist_id": "C115106",
+  "smiles": "COC",
+  "inchikey": "LCGLNKUTAGEVQW-UHFFFAOYSA-N",
+  "tag": "851eb6b0f6d1",
+  "n_label_usable": 9
+ },
+ {
+  "g2_name": "OCHCHO",
+  "nist_id": "C107222",
+  "smiles": "O=CC=O",
+  "inchikey": "LEQAOMBKQFMDFZ-UHFFFAOYSA-N",
+  "tag": "888498b27baa",
+  "n_label_usable": 5
+ },
+ {
+  "g2_name": "C3H4_C3v",
+  "nist_id": "C74997",
+  "smiles": "C#CC",
+  "inchikey": "MWWATHDPGQKSAR-UHFFFAOYSA-N",
+  "tag": "14797bbeb737",
+  "n_label_usable": 8
+ },
+ {
+  "g2_name": "CH3COOH",
+  "nist_id": "C64197",
+  "smiles": "CC(=O)O",
+  "inchikey": "QTBSBXVTEAMEQO-UHFFFAOYSA-N",
+  "tag": "1d43ee898a92",
+  "n_label_usable": 14
+ },
+ {
+  "g2_name": "CF4",
+  "nist_id": "C75730",
+  "smiles": "FC(F)(F)F",
+  "inchikey": "TXEYQDLBPFQVAA-UHFFFAOYSA-N",
+  "tag": "cc962e29a83d",
+  "n_label_usable": 3
+ },
+ {
+  "g2_name": "CH3SiH3",
+  "nist_id": "C992949",
+  "smiles": "C[SiH3]",
+  "inchikey": "UIUXUFNYAYAMOE-UHFFFAOYSA-N",
+  "tag": "a6606824ee8d",
+  "n_label_usable": 8
+ },
+ {
+  "g2_name": "HCF3",
+  "nist_id": "C75467",
+  "smiles": "FC(F)F",
+  "inchikey": "XPDWGBQVDMORPB-UHFFFAOYSA-N",
+  "tag": "792edff55e4c",
+  "n_label_usable": 5
+ },
+ {
+  "g2_name": "H2CCl2",
+  "nist_id": "C75092",
+  "smiles": "ClCCl",
+  "inchikey": "YMWUJEATGCHHMB-UHFFFAOYSA-N",
+  "tag": "3c60d1c2d1a3",
+  "n_label_usable": 7
+ }
+]

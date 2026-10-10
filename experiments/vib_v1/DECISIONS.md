@@ -538,3 +538,11 @@ could have influenced it. Append only. Corrections are added as new entries.
     stated before it: Dev CV Δ −3.63 cm⁻¹ (SD 5.94, n = 28); T has 17
     molecules, so the interval will be wide; one Dev molecule exceeds the
     force-drift bound.
+- **D-39 (2026-10-10). Unblinded; result recorded.**
+  - Single run 20261010T215353Z; lock shows one start and one finish.
+  - H1 not supported: Δ = −0.48 cm⁻¹, 95% CI [−4.89, +4.76], 16 molecules
+    (acetone excluded, empty scored set), 125 scored modes, no invalid
+    predictions. Force-drift bound exceeded on one test molecule (NF3, 0.076
+    eV/Å). Full outcomes in RESULTS.md.
+  - Salt disclosed (SALT_DISCLOSED.txt); salt digest and all three
+    commitments verified; T files copied to results/unsealed/.
