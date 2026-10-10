@@ -546,3 +546,11 @@ could have influenced it. Append only. Corrections are added as new entries.
     eV/Å). Full outcomes in RESULTS.md.
   - Salt disclosed (SALT_DISCLOSED.txt); salt digest and all three
     commitments verified; T files copied to results/unsealed/.
+- **D-40 (2026-10-10). Results audited by the critic.**
+  - Red-team report #12 reproduced the primary analysis independently from
+    mode_predictions.csv and verified the run, the digests and the
+    commitments. Verdict: accepted with four corrections to RESULTS.md, all
+    applied: separate the H1 harm criterion from the §5.1 drift harm; "not
+    confirmed" instead of "did not carry over" for the Dev estimate; report
+    energy offsets per atom; report the H2CCl2 merged class and the absence
+    of exceptions.

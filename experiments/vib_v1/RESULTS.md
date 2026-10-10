@@ -20,11 +20,14 @@ only; see DEVIATIONS.md).
 | Wilcoxon signed-rank (two-sided) | p = 0.21 |
 
 The pre-registered criterion was an upper CI bound below −2.5 cm⁻¹. The upper
-bound is +4.76. **No meaningful improvement, no improvement, no harm and no
-meaningful harm can be claimed**; the interval covers both −2.5 and +2.5, so
-the test is inconclusive rather than evidence of no effect.
+bound is +4.76. On the H1 endpoint, **no meaningful improvement, no
+improvement, no harm (CI lower bound above 0) and no meaningful harm can be
+claimed**; the interval covers both −2.5 and +2.5, so the test is inconclusive
+rather than evidence of no effect. The drift guardrail below is a separate
+criterion, and it is exceeded.
 
-The Dev cross-validated estimate (−3.63 cm⁻¹, n = 28) did not carry over.
+The Dev cross-validated estimate (−3.63 cm⁻¹, n = 28) was not confirmed. It
+lies inside the test interval, so the test cannot distinguish it from zero.
 
 ## Harm guardrail (§5.1): force-drift bound exceeded
 
@@ -32,10 +35,14 @@ The Dev cross-validated estimate (−3.63 cm⁻¹, n = 28) did not carry over.
   0.05 bound; all other test molecules below it (next 0.042, propyne).
   Median 0.015.
 * Relative-energy bound met (max 0.0051 eV against 0.02).
+* Energy offsets per atom (also reported, §5.1): median +0.0036 eV; largest
+  in magnitude SiH4 −0.0276, NF3 −0.0205, CH3SiH3 −0.0149 eV.
 * On Dev the bound was already exceeded for F2O (0.133), known before
   unblinding.
 
-Per the protocol this is reported as harm next to H1.
+The H1 harm criterion is not met; separately, exceeding the §5.1 force-drift
+bound on one test molecule is what the protocol classifies as harm, and it is
+reported as such next to H1.
 
 ## Secondary and sensitivity analyses
 
@@ -53,7 +60,12 @@ Per the protocol this is reported as harm next to H1.
 * Other sensitivity analyses (ratings A–C, no crossing-risk modes, no
   resonance modes, no merged-class modes, ≥ 3 modes, coupled Δ, no-Coriolis Δ,
   Δ × 0.85, Δ × 1.15): Δ between −2.84 and +1.52, every interval contains 0.
-* No invalid predictions for any model; no imputation was needed.
+* No invalid predictions for any model, no exceptions, and no imputation was
+  needed.
+* One merged class occurred on T: H2CCl2 has two axis conventions consistent
+  with its species counts, so its b1 and b2 species were merged and matched by
+  measured-value rank within the merged class (3 scored modes). This is what
+  the "no merged-class modes" analysis (Δ = −0.57) removes.
 
 ## Exclusions
 
@@ -92,7 +104,9 @@ Per the protocol this is reported as harm next to H1.
   no Si–H bond (its silicon molecules are SiCl4 and SiF4). The leave-one-out
   minimum (−2.54) is the value without SiH4. This suggests the fitted change
   does not transfer to bond types absent from the training molecules; it
-  would need a new pre-registered test to establish.
+  would need a new pre-registered test to establish. It rests on two
+  molecules. The worsening of the X–H stretch class (19.1 → 28.1) may be the
+  same observation rather than a second one.
 * CH3CHO and CH3COOH have base errors of 79 and 52 cm⁻¹ that FT does not
   change; whether these are model errors or label/assignment problems of the
   kind seen for aziridine on Dev was not investigated.
